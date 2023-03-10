@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\Auth\SocialController;
 
 /*
@@ -21,10 +23,14 @@ Auth::routes(['verify' => true]);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/auth/{provider}', [SocialController::class, 'redirectToProvider']);
 Route::get('/auth/{provider}/callback', [SocialController::class, 'handleProvideCallback']);
 
+Route::get('/members', [MemberController::class, 'index']);
 
+Route::get('/members/add', [MemberController::class, 'create']);
+
+Route::post('/members/add', [MemberController::class, 'store']);
 
 ?>

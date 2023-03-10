@@ -12,7 +12,8 @@ class MemberController extends Controller
      */
     public function index()
     {
-        //
+        //dd('masuk');
+        return view('members.index');
     }
 
     /**
@@ -20,7 +21,8 @@ class MemberController extends Controller
      */
     public function create()
     {
-        //
+        return view('members.create');
+
     }
 
     /**
@@ -29,6 +31,25 @@ class MemberController extends Controller
     public function store(Request $request)
     {
         //
+//dd($request);
+        Member::create([
+            'first_name' => $request->firstName,
+            'last_name' => $request->lastName,
+            'email' => $request->email,
+            'phone_number' => $request->mobileNo,
+            'street' => $request->street,
+            'city' => $request->city,
+            'state' => $request->state,
+            'zip_code' => $request->zipCode,
+            'date_of_birth' => $request->dateOfBirth,
+            'date_of_joining' => $request->dateOfJoining,
+            'date_of_confirmation' => $request->dateOfConfirmation,
+          
+
+           
+
+        ]);
+        return redirect('members');
     }
 
     /**
